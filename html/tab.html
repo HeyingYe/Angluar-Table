@@ -1,0 +1,25 @@
+<table>
+		<thead>
+			<tr>
+				<th>#</th>
+				<th ng-repeat="(key,value) in data[0]" ng-click="order(key)" ng-bind="dictionary[lang][key] ? dictionary[lang][key] : key"></th>
+			</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat = "person in data | orderBy:desc:dir | filter:myFilter | limitTo : pagerow : (page - 1) * pagerow" >
+			<td scope="person" ng-bind = "$index + 1"></td>
+			<td ng-repeat = "(key,value) in person" ng-bind="value"></td>
+		</tr>
+		</tbody>		
+		<tfoot>
+          <tr>
+            <td colspan="10">
+                <ul ng-click = "catch($event)">
+                  <li class="{{n+1 == page ? 'active' : ''}}" ng-repeat="n in [] | range: pagecount">
+                    <a href="#" ng-bind="$index + 1"></a>
+                  </li>
+                </ul>
+            </td>
+          </tr>
+        </tfoot>
+	</table>
