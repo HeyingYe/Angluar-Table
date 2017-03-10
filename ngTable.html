@@ -4,128 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="../Font-Awesome/css/font-awesome.min.css"> -->
-    <style>
-    td {
-        text-align: center;
-        margin: 0 20px;
-    }
-    
-    th {
-        cursor: pointer;
-    }
-    
-    li {
-        list-style: none;
-        float: left;
-        width: 30px;
-        height: 20px;
-        text-align: center;
-    }
-    
-    .active a {
-        color: red;
-    }
-    </style>
+    <link rel="stylesheet" href="font-awesome-4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bootstrap-3.3.5-dist/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/ngTable.css">
+    <script src="js/jquery.js"></script>
     <script src="angular/angular.min.js"></script>
-    <script src="js/global.js"></script>
+    <script type="text/javascript" src=""></script>
+    <script src="js/global.js" src="angular-ui/angular-ui-router.min.js"></script>    
+    <script src="js/ngTable.js"></script>
 </head>
 
 <body ng-app="myApp" ng-controller="list">
-    <!--表单模板-->
-    <select ng-model = "lang">
-	<option value="en">英文</option>
-	<option value="cn">中文</option>
-	</select>
-	<select ng-model="columnName">
-		<option value=""></option>
-		<option ng-repeat="(key,value) in data[0]" ng-value="key" ng-bind="key"></option>
-	</select>
-	<input type="text" ng-model="keyword">
     <!--table模板-->
     <tab></tab>
-    <script>
-    //依赖注入globalApp模块
-    var app = angular.module("myApp", ["globalApp"]);
-     //自定义过滤器
-    app.filter("range", function() {
-        return function(array, range) {
-            for (var i = 0; i < range; i++) {
-                array.push(i);
-            }
-            return array;
-        }
-    })
-    //自定义指令，加载模板
-    // app.directive('for', function() {
-    //     return {
-    //         restrict: 'E',
-    //         templateUrl: 'html/select.html',
-    //         replace: true,
-    //         scope: false,
-    //         controller: function($scope,lang,dictionary) {
-    //         	console.log($scope)
-    //         	console.log(lang)
-    //         	$scope.lang = lang; //语言类型
-    //             $scope.dictionary = dictionary; //词典
-    //         }
-    //     }
-    // })
-    app.directive('tab',function() {
-            return {
-                restrict: 'E',
-                templateUrl: 'html/tab.html',
-                replace: true,
-                scope: false,
-                controller: function($scope,$http,direction,baseUrl,Searchservice) {
-                	// console.log($scope);
-                	// console.log($http)
-                	// console.log(direction)
-                	// console.log(baseUrl);
-                	// console.log(Searchservice)
-                    // $http.get(baseUrl).success(function(res) {
-                    // 	// console.log(res)
-                    //     $scope.data = res.data;
-                    //     // console.log($scope.data )
-                    //     $scope.pagerow = 5;
-                    //     $scope.page = 1;
-                    //     $scope.rowcount = $scope.data.length;
-                    //     $scope.pagecount = Math.ceil($scope.rowcount / $scope.pagerow);
-                    // })
-                    // $scope.desc = "indexid"; //按属性值排序
-                    // $scope.dir = direction; //排序方向
-                }
-            }
-        })
-    app.controller("list", ["$scope", "$http", "lang","dictionary","Searchservice","baseUrl","direction", function($scope, $http, lang,dictionary,Searchservice,baseUrl,direction) {
-    	$http.get(baseUrl).success(function(res) {
-        	// console.log(res)
-            $scope.data = res.data;
-            // console.log($scope.data )
-            $scope.pagerow = 5;
-            $scope.page = 1;
-            $scope.rowcount = $scope.data.length;
-            $scope.pagecount = Math.ceil($scope.rowcount / $scope.pagerow);
-        })
-        $scope.desc = "indexid"; //按属性值排序
-        $scope.dir = direction;
-        // console.log(Searchservice)	
-        $scope.lang = lang;
-        $scope.dictionary = dictionary;
-       //分页显示
-        $scope.catch = function(event) {
-                $scope.page = event.target.innerHTML;
-            }
-            //点击标题栏按属性值排序
-        $scope.order = function(key) {
-            $scope.desc = key;
-            $scope.dir = !$scope.dir;
-        }
-        $scope.myFilter = function(item) {
-            Searchservice.filter(item, $scope.columnName, $scope.keyword)
-        }
-    }])
-    </script>
 </body>
 
 </html>

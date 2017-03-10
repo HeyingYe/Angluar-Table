@@ -34,3 +34,9 @@ globalApp.service("Searchservice",function(){
 		return false;
 	}
 })
+globalApp.directive("datagrid",function(){
+	return {
+		restrict:"E",
+		templateUrl:
+	}
+})

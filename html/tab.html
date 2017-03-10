@@ -1,3 +1,12 @@
+<select ng-model = "lang">
+	<option value="en">英文</option>
+	<option value="cn">中文</option>
+	</select>
+	<select ng-model="columnName">
+		<option value=""></option>
+		<option ng-repeat="(key,value) in data[0]" ng-value="key" ng-bind="key"></option>
+</select>
+<input type="text" ng-model="keyword">
 <table>
 		<thead>
 			<tr>
@@ -22,4 +31,4 @@
             </td>
           </tr>
         </tfoot>
-	</table>
+</table>
