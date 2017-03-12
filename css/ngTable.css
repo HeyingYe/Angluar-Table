@@ -1,20 +1,47 @@
- td {
-        text-align: center;
-        margin: 0 20px;
-    }
-    
-    th {
-        cursor: pointer;
-    }
-    
-    li {
-        list-style: none;
-        float: left;
-        width: 30px;
-        height: 20px;
-        text-align: center;
-    }
-    
-    .active a {
-        color: red;
-    }
+.wrap{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+.header{
+    position:absolute;
+    height: 60px;
+    line-height: 60px;
+    text-align:center;
+    left: 0;
+    top: 0;
+    right: 0;
+    border-bottom: 1px solid #ccc;
+}
+.main{
+    position:absolute;
+    top:61px;
+    left: 0;
+    right: 0;
+    bottom:30px;
+    border-bottom:1px solid #ccc;
+}
+.main .left{
+    width:25%;
+    border-right: 1px solid #ccc;
+    float:left;
+    height: 100%;
+}
+.main .right{
+    width:74%;
+    float:right;
+    height: 100%;
+    overflow:scroll;
+}
+.footer{
+    position:absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height:29px;
+    text-align:center;
+    background: #fff;
+    z-index: 100;
+}

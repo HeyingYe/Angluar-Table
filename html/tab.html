@@ -7,7 +7,7 @@
 		<option ng-repeat="(key,value) in data[0]" ng-value="key" ng-bind="key"></option>
 </select>
 <input type="text" ng-model="keyword">
-<table>
+<table class="table">
 		<thead>
 			<tr>
 				<th>#</th>
@@ -15,7 +15,7 @@
 			</tr>
 		</thead>
 		<tbody>
-		<tr ng-repeat = "person in data | orderBy:desc:dir | filter:myFilter | limitTo : pagerow : (page - 1) * pagerow" >
+		<tr ng-repeat = "person in data | orderBy:desc:dir | filter:myFilter | limitTo : pagerow : (page - 1) * pagerow">
 			<td scope="person" ng-bind = "$index + 1"></td>
 			<td ng-repeat = "(key,value) in person" ng-bind="value"></td>
 		</tr>
@@ -23,7 +23,7 @@
 		<tfoot>
           <tr>
             <td colspan="10">
-                <ul ng-click = "catch($event)">
+                <ul ng-click = "catch($event)" class="pagination pagination-teal">
                   <li class="{{n+1 == page ? 'active' : ''}}" ng-repeat="n in [] | range: pagecount">
                     <a href="#" ng-bind="$index + 1"></a>
                   </li>
